@@ -1,0 +1,55 @@
+[ec2-user@mail opendkim]$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+uucp:x:10:14:uucp:/var/spool/uucp:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+gopher:x:13:30:gopher:/var/gopher:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+saslauth:x:499:76:"Saslauthd user":/var/empty/saslauth:/sbin/nologin
+mailnull:x:47:47::/var/spool/mqueue:/sbin/nologin
+smmsp:x:51:51::/var/spool/mqueue:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+ec2-user:x:500:500:EC2 Default User:/home/ec2-user:/bin/bash
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/bash
+mailreader:x:200:12::/home/mail:/sbin/nologin
+clamupdate:x:498:497:Clamav database update user:/var/lib/clamav:/sbin/nologin
+clamscan:x:497:495:Clamav scanner user:/:/sbin/nologin
+amavis:x:496:494:User for amavisd-new:/var/spool/amavisd:/sbin/nologin
+dovecot:x:97:97:Dovecot IMAP server:/usr/libexec/dovecot:/sbin/nologin
+dovenull:x:495:493:Dovecot's unauthorized user:/usr/libexec/dovecot:/sbin/nologin
+opendkim:x:494:492:OpenDKIM Milter:/var/run/opendkim:/sbin/nologin
+
+
+[ec2-user@mail opendkim]$ ls -la /home/
+total 16
+drwxr-xr-x  4 root       root     4096 Mar 12  2018 .
+dr-xr-xr-x 25 root       root     4096 Mar 12  2018 ..
+drwx------  3 ec2-user   ec2-user 4096 Oct  8 03:29 ec2-user
+drwx------  5 mailreader mail     4096 Mar 14  2018 mail
+
+
+ec2-user@mail opendkim]$ sudo ls -la /home/mail/
+total 32
+drwx------  5 mailreader mail 4096 Mar 14  2018 .
+drwxr-xr-x  4 root       root 4096 Mar 12  2018 ..
+-rw-r--r--  1 mailreader mail   18 Aug 30  2017 .bash_logout
+-rw-r--r--  1 mailreader mail  193 Aug 30  2017 .bash_profile
+-rw-r--r--  1 mailreader mail  124 Aug 30  2017 .bashrc
+drwxr-xr-x 11 mailreader mail 4096 Apr  6  2018 email_marketing
+drwxr-xr-x 10 mailreader mail 4096 Sep 26 05:47 email_marketing_bounce
+drwx------ 10 mailreader mail 4096 Mar 14  2018 email_marketing@mail.crazysoft.com.au

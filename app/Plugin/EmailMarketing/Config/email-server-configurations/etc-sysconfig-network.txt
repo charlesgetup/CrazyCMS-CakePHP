@@ -1,0 +1,5 @@
+/etc/sysconfig/network
+
+NETWORKING=yes
+HOSTNAME=mail.crazysoft.com.au
+NOZEROCONF=yes

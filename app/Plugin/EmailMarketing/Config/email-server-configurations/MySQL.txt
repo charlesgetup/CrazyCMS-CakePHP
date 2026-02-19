@@ -1,0 +1,57 @@
+MySQL: postfix_mail
+
++------------------------+
+| Tables_in_postfix_mail |
++------------------------+
+| aliases                |
+| transports             |
+| users                  |
++------------------------+
+
+
+mysql> describe aliases;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| alias | varchar(255) | NO   | PRI | NULL    |       |
+| email | varchar(255) | NO   |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+
+mysql> describe transports;
++-----------+------------------+------+-----+---------+-------+
+| Field     | Type             | Null | Key | Default | Extra |
++-----------+------------------+------+-----+---------+-------+
+| domain    | varchar(255)     | NO   | PRI | NULL    |       |
+| gid       | int(10) unsigned | NO   | UNI | NULL    |       |
+| transport | varchar(255)     | NO   |     | NULL    |       |
++-----------+------------------+------+-----+---------+-------+
+
+mysql> describe users;
++------------+-----------------------+------+-----+-------------------+-------+
+| Field      | Type                  | Null | Key | Default           | Extra |
++------------+-----------------------+------+-----+-------------------+-------+
+| email      | varchar(255)          | NO   | PRI | NULL              |       |
+| password   | varchar(255)          | NO   |     | NULL              |       |
+| first_name | varchar(255)          | NO   |     | NULL              |       |
+| last_name  | varchar(255)          | NO   |     | NULL              |       |
+| maildir    | varchar(255)          | NO   |     | NULL              |       |
+| status     | enum('PAID','UNPAID') | NO   |     | UNPAID            |       |
+| created    | timestamp             | NO   |     | CURRENT_TIMESTAMP |       |
++------------+-----------------------+------+-----+-------------------+-------+
+
+mysql> select * from transports;
++-----------------------+-----+-----------+
+| domain                | gid | transport |
++-----------------------+-----+-----------+
+| mail.crazysoft.com.au |  12 | virtual:  |
++-----------------------+-----+-----------+
+
+mysql> select * from users;
++----------------------------------------------+--------------------------------------------------------------------------------------------------+----------------+-----------+-------------------------+--------+---------------------+
+| email                                        | password                                                                                         | first_name     | last_name | maildir                 | status | created             |
++----------------------------------------------+--------------------------------------------------------------------------------------------------+----------------+-----------+-------------------------+--------+---------------------+
+| email_marketing@crazysoft.com.au             | {SHA512}Q7+tmp8yNX/jIP5vftrTkinaD2FEkxMWeZ/vaVvV3l6o/UcOA1oamTLzWjlmEs1PUWe+X8Gep9ovKJjh0rjO3g== | Email          | Marketing | email_marketing/        | PAID   | 2018-03-20 04:30:13 |
+| email_marketing@mail.crazysoft.com.au        | {SHA512}Q7+tmp8yNX/jIP5vftrTkinaD2FEkxMWeZ/vaVvV3l6o/UcOA1oamTLzWjlmEs1PUWe+X8Gep9ovKJjh0rjO3g== | Email          | Marketing | email_marketing/        | PAID   | 2018-03-08 06:05:39 |
+| email_marketing_bounce@crazysoft.com.au      | {SHA512}0wsIpGk2cK0PKUxJaY9yAEGD8umqyVbDFCfmm0zlsivdQjWAAXvRkIF04SLBStJJP2n3uxoeVe+TwFcD/PjIMg== | Email          | Marketing | email_marketing_bounce/ | PAID   | 2018-03-20 04:31:00 |
+| email_marketing_bounce@mail.crazysoft.com.au | {SHA512}0wsIpGk2cK0PKUxJaY9yAEGD8umqyVbDFCfmm0zlsivdQjWAAXvRkIF04SLBStJJP2n3uxoeVe+TwFcD/PjIMg== | EmailMarketing | Bounce    | email_marketing_bounce/ | PAID   | 2018-03-08 06:05:39 |
++----------------------------------------------+--------------------------------------------------------------------------------------------------+----------------+-----------+-------------------------+--------+---------------------+

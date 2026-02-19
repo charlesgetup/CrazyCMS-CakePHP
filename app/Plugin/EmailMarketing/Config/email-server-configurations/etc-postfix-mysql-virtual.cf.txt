@@ -1,0 +1,7 @@
+user=postfix_admin
+password=v6XEi&Wks&H6
+dbname=postfix_mail
+table=aliases
+select_field=email
+where_field=alias
+hosts=localhost
